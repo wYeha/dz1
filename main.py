@@ -75,9 +75,9 @@ def main():
                 continue
             print(*readFile(file_name))
         elif command == "c":
-            src_file = input("Введите имя исходного файла: ")
-            dest_file = input("Введите имя целевого файла: ")
-            line_num = int(input("Введите номер строки для копирования: "))
+            src_file = input("Введите имя исходного файла!: ")
+            dest_file = input("Введите имя целевого файла!: ")
+            line_num = int(input("Введите номер строки для копирования!: "))
 
             if not exists(src_file):
                 print("Исходный файл не найден.")

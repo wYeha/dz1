@@ -74,6 +74,29 @@ def main():
                 print("Файл отсутствует, создайте его.")
                 continue
             print(*readFile(file_name))
+        elif command == "c":
+            src_file = input("Введите имя исходного файла: ")
+            dest_file = input("Введите имя целевого файла: ")
+            line_num = int(input("Введите номер строки для копирования: "))
 
+            if not exists(src_file):
+                print("Исходный файл не найден.")
+                continue
+
+            src_data = readFile(src_file)
+            if line_num > len(src_data):
+                print("Номер строки превышает количество строк в файле.")
+                continue
+
+            if not exists(dest_file):
+                createFile(dest_file)
+
+            dest_data = readFile(dest_file)
+            dest_data.append(src_data[line_num])
+
+            with open(dest_file, "w", encoding="utf-8", newline="") as data:
+                f_writer = DictWriter(data, fieldnames=["Имя", "Фамилия", "Телефон"])
+                f_writer.writeheader()
+                f_writer.writerows(dest_data)
 
 main()
